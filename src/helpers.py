@@ -25,12 +25,8 @@ def get_session(*arg_http_codes, retry_count):
   """
   # If invalid retry_count, set to 3
   retry_count = retry_count if isinstance(retry_count, int) and retry_count >= 0 else 3
-  response_codes_to_retry = []
-  for code in arg_http_codes:
-    """ Ensure response code is valid """
-    if isinstance(code, int) and code > 0:
-      response_codes_to_retry.append(code)
-  retry_policy = Retry(total=retry_count, backoff_factor=1, status_forcelist=response_codes_to_retry)
+  arg_http_codes = [code for code in arg_http_codes if isinstance(code, int) and code > 0]
+  retry_policy = Retry(total=retry_count, backoff_factor=1, status_forcelist=arg_http_codes)
   s = requests.Session() 
   s.mount("https://", HTTPAdapter(max_retries=retry_policy))
   return s
