@@ -47,10 +47,10 @@ def query_7_days():
     print("No data found in data set that matches 'time', 'mag' and 'type' parameters...\n")
   else:
     # Print earthquakes matching parameters
-    print('****** PLACES WITH EARTHQUAKES OVER THE PAST 7 DAYS WITH A MAGNITUDE OF OVER 4.5 - SORTED BY MAG *****')
+    print('****** PLACES WITH EARTHQUAKES FOR THE PAST DAY (7-day query) WITH A MAGNITUDE OF OVER 4.5 - SORTED BY MAG *****')
     for earthquake in earthquakes:
       print(f"{earthquake.get(PROPERTIES, {}).get(PLACE, {})}")
-    print("******************************************************************************************************\n")
+    print("****************************************************************************************************************\n")
 
   # Proceed to submenu to get URL from
   # the *INITIAL* JSON dataset
@@ -98,10 +98,10 @@ def query_30_days():
   if len(map_data) == 0:
     print("No data found in data set for the given parameters...\n")
   else:
-    print("\n***************** EARTHQUAKE COUNT FOR STATES AND COUNTRIES FOR THE LAST 30 DAYS *********************")
+    print("\n********************** EARTHQUAKE COUNT FOR STATES AND COUNTRIES FOR THE LAST 30 DAYS **************************")
     for k, v in map_data.items():
       print(f"{k}: {v}")
-    print("******************************************************************************************************\n")
+    print("****************************************************************************************************************\n")
 
   # Proceed to submenu to get URL from
   # the *INITIAL* JSON dataset
@@ -132,11 +132,11 @@ def match_input(user_input):
 
 # Main menu for console application
 menu = "\
-******************************************** MAIN MENU ***********************************************\n\
+************************************************* MAIN MENU ****************************************************\n\
 'q'-Quit\n\
-'s'- Print all earthquakes for past (7) days\n\
+'s'- Print the place of all earthquakes with magnitude > 4.5 for the past day from 7-day query\n\
 't'- Print earthquake count for countries and states for past (30) days\n\
-******************************************************************************************************\n"
+****************************************************************************************************************\n"
 userInput = ''
 while(userInput != 'q'):
   print(menu)
