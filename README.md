@@ -17,4 +17,4 @@
 **Note: This assumes you have the dependencies to run the application. It is HIGHLY RECOMMENDED to run this application in a Docker container.**
 1. Open command-line interface (search **cmd** in windows or **terminal** in mac)
 2. Navigate to **src** folder
-2. Type ```python app.py```
+3. Run ```python app.py```
