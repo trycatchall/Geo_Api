@@ -34,8 +34,8 @@ def get_session(*arg_http_codes, retry_count):
 
 
 """
-Submenu to all input of a code to provide a user
-with the correct URL for the detail geojson data set
+Submenu for input of a code to provide a user with
+the correct URL for the detail geojson data set
 Arguments:
   data: a dictionary (JSON object)
 Returns:
@@ -50,7 +50,7 @@ def get_by_code(data):
     user_input = input('To get URL from initial data set, input code and then press ENTER: ').strip().lower()
     if user_input == 'r':
       break;
-    item = next(iter([quake for quake in data if (quake.get(PROPERTIES, {}).get(CODE, {}) or "") == user_input]), None)
+    item = next(iter([quake for quake in data if (quake.get(PROPERTIES, {}).get(CODE) or "") == user_input]), None)
 
     # If no user input
     if len(user_input.strip()) == 0:
