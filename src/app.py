@@ -35,9 +35,9 @@ def query_7_days():
   # IMPORTANT: filter by 'earthquake', as data can contain 'ice quake'
   # and 'quarry blast'
   earthquakes = [quake for quake in data.get(FEATURES, {})
-                if (quake.get(PROPERTIES, {}).get(TIME, {}) or last_day ) > last_day
-                and (quake.get(PROPERTIES, {}).get(MAG, {}) or 4.5) > 4.5
-                and (quake.get(PROPERTIES, {}).get(TYPE, {}) or '') == 'earthquake']
+                if (quake.get(PROPERTIES, {}).get(TIME) or last_day ) > last_day
+                and (quake.get(PROPERTIES, {}).get(MAG) or 4.5) > 4.5
+                and (quake.get(PROPERTIES, {}).get(TYPE) or '') == 'earthquake']
   # Sort filtered earthquakes in place by magnitude in descending order
   earthquakes.sort(key=lambda x: x.get(PROPERTIES, {}) and x.get(PROPERTIES, {}).get(MAG, {}), reverse=True)
 
@@ -83,9 +83,9 @@ def query_30_days():
   # map_data will store key, value of place and earthquake count
   map_data = {}
   # Make sure to filter for 'earthquakes' since 'ice quakes' and 'quary blast' also occur
-  earthquakes = [quake for quake in data.get(FEATURES, {}) if (quake.get(PROPERTIES, {}).get(TYPE, {}) or '') == 'earthquake']
+  earthquakes = [quake for quake in data.get(FEATURES, {}) if (quake.get(PROPERTIES, {}).get(TYPE) or '') == 'earthquake']
   for k in earthquakes:
-    place = k.get(PROPERTIES, {}).get(PLACE, {})
+    place = k.get(PROPERTIES, {}).get(PLACE)
     if place and len(place.strip()) > 0: # if place has valid data
       place = place.split(', ')[-1].strip() # get place from string
       map_data[place] = map_data[place] + 1 if map_data.get(place) else 1 # set earthquake count for place
