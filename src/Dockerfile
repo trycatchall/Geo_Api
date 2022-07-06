@@ -9,7 +9,8 @@ WORKDIR /home/app_user
 #RUN pip install
 RUN pip install requests
 
-# Change to previously-created user
+# Change to previously-created user.
+# Bad practice to run as root.
 USER app_user
 
 # Copy application source code from Dockerfile directory in the host to /home/app_user
